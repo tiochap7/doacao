@@ -1,0 +1,175 @@
+
+
+
+<!DOCTYPE html>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!--[if IE 7]><html class="no-js lt-ie10 lt-ie9 lt-ie8 " lang="pt" dir="" xml:lang="pt" itemscope itemtype="http://schema.org/WebSite"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie10 lt-ie9 " lang="pt" dir="" xml:lang="pt" itemscope itemtype="http://schema.org/WebSite"><![endif]-->
+<!--[if IE 9]><html class="no-js lt-ie10 " lang="pt" dir="" xml:lang="pt" itemscope itemtype="http://schema.org/WebSite"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js " lang="pt" dir="" xml:lang="pt" itemscope itemtype="http://schema.org/WebSite"><!--<![endif]-->
+
+<!--[if !IE]><!--><script>  
+var ua = navigator.userAgent,
+    doc = document.documentElement;
+
+	if ((ua.match(/MSIE 10.0/i))) {
+    	doc.className = doc.className + " gt-ie9 ie10";
+	} else if((ua.match(/rv:11.0/i))){
+    	doc.className = doc.className + " gt-ie9 ie11";
+  	} 
+</script><!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Stylesheets-->
+	
+	<link rel="stylesheet" media="print,screen,tv,projection" type="text/css" href="global.css" />
+
+	<link rel="stylesheet" media="print,screen,tv,projection" type="text/css" href="https://6d822aea659b49ec1106-651bbca9f5835752fa28f921d9802238.ssl.cf1.rackcdn.com/css/typography.css" />
+
+	<!-- Javascript -->
+
+	<!--[if (gte IE 6)&(lte IE 8)]>
+  		<script type="text/javascript" src="/themes/global-donations/js/libs/selectivizr/jquery.selectivizr.min.js?v=23e09250746330c00e54660701e29164"></script>
+	<![endif]-->
+
+	<!--[if lt IE 8]>
+		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+	<![endif]-->
+
+	<!-- Favicon -->
+
+	<link rel="icon" type="image/png" href="https://6d822aea659b49ec1106-651bbca9f5835752fa28f921d9802238.ssl.cf1.rackcdn.com/img/favicon.png" />
+	<!--[if IE]>
+		<link rel="icon" href="https://6d822aea659b49ec1106-651bbca9f5835752fa28f921d9802238.ssl.cf1.rackcdn.com/img/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="https://6d822aea659b49ec1106-651bbca9f5835752fa28f921d9802238.ssl.cf1.rackcdn.com/img/favicon.ico" type="image/x-icon" />
+	<![endif]-->
+
+	 
+	
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Ocorreu um erro - ACNUR Brasil</title>
+
+<script type="text/javascript">
+var pap_field = {
+    "AMT" : "montante",
+    "ACCT" : "número de cartão de crédito",
+    "EXPDATE" : "data de expiração",
+    "NAME" : "nome do titular do cartão de crédito",
+    "CVV2" : "código de segurança do cartão de crédito",
+    "STREET" : "logradouro",
+    "CITY" : "cidade",
+    "STATE" : "estado",
+    "ZIP" : "CEP",
+    "PHONENUM" : "telefone",
+    "TAXID" : "CPF",
+    "TYPE" : "tipo do cartão de crédito",
+    "PAYPERIOD" : "periodicidade",
+    "COUNTRY" : "país",
+    "EMAIL" : "e-mail"
+}
+
+var pap_error = {
+"FAIL_UNKNOWN" : { msg: "Erro desconhecido." }, 
+"FAIL_NOTIMPL" : { msg: "Operation not implemented." },
+"FAIL_NOT_SUPPORTED" : { msg: "Não-suportado." },
+"FAIL_TESTING" : { msg: "Erro de teste." },
+"FAIL_CONFIGURATION" : { msg: "Erro de configuração." },
+"FAIL_NOT_FOUND" : { msg: "Couldn't find original transaction" },
+"ERROR_NETWORK" : { msg: "Tente mais tarde." },
+"ERROR_TRANSIENT" : { msg: "Tente mais tarde." },
+"DATA_MISSING" : { msg: "Campo Obrigatório: ", useData: true },
+"DATA_INVALID" : { msg: "Campo inválido: ", useData: true },
+"DATA_CARD_NOT_ALLOWED" : { msg: "Cartão não-autorizado." },
+"REFUSED_PAYMENT" : { msg: "Pagamento recusado." },
+"REFUSED_PROVIDER" : { msg: "Pagamento recusado." },
+"REFUSED_TIMEOUT" : { msg: "O tempo para realizar essa transação expirou.", headline: "Infelizmente o seu Pix para as pessoas refugiadas não foi realizado." },
+"REFUSED_BANK" : { msg: "Por favor, contate seu banco." }
+}
+
+function getTranslatedError() {
+  var errCode = decodeParam(getParameterFromUrl("plia_error_code")) || "FAIL_UNKNOWN";
+  var errData = decodeParam(getParameterFromUrl("plia_error_data")).replace(/^(.*) #.*$/,"$1");
+  var errMsg = pap_error[errCode].msg;
+  if (pap_error[errCode].useData && errData)
+    errMsg += pap_field[errData];
+
+  return errMsg;
+}
+
+function getHeadLine() {
+  var errCode = getParameterFromUrl("plia_error_code") || "FAIL_UNKNOWN";
+  var errMsg = pap_error[errCode].headline;
+  if (!errMsg) errMsg="Infelizmente ocorreu uma falha na sua doação.";
+
+  return errMsg;
+}
+
+function decodeParam(str)
+{
+      return decodeURIComponent((str+'').replace(/\+/g,'%20')).replace(/[<>]/g,'');
+}
+
+  function getParameterFromUrl(strParamName) {
+    var strReturn = "";
+    var strHref = window.location.href;
+    if ( strHref.indexOf("?") > -1 ) {
+      var strQueryString = strHref.substr(strHref.indexOf("?"));
+      var aQueryString = strQueryString.split("&");
+      for ( var iParam = 0; iParam < aQueryString.length; iParam++ ) {
+        if (aQueryString[iParam].indexOf(strParamName + "=") > -1 ) {
+          var aParam = aQueryString[iParam].split("=");
+          strReturn = aParam[1];
+          break;
+        }
+      }
+    }
+    return strReturn;
+}
+
+</script>
+
+</head>
+
+	<style> html{ height:100%; min-height:100%; } body{ min-height:100%; } </style>
+
+	<body class="live-mode destination-page" style="background-color: #0072BC !important;">
+		
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-HVQ7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-HVQ7');</script>
+<!-- End Google Tag Manager --> 
+
+	<div id="header">
+	
+		<div class="row">
+			<div class="columns col-4">
+<div class="mstd-content-block">
+	<p><a title="UNHCR Official Website" href="http://unhcr.org/" target="_blank"><img src="https://6d822aea659b49ec1106-651bbca9f5835752fa28f921d9802238.ssl.cf1.rackcdn.com/img/unhcr-logo-90-pt.png" alt="unhcr-logo-90-pt.png" width="449" height="180" /></a></p></div></div>
+		</div>
+	
+	</div>
+
+	<div id="content">
+		
+		<div class="row" style="margin:15%; width: 80%"><div class="columns col-12">
+<div class="mstd-content-block unhcr-failed">
+<h2 style="text-align: left;"><strong><script>document.write(getHeadLine());</script></strong></h2>
+<h2 style="text-align: left; padding-left: 30px;">&bull;&nbsp;<script>document.write(getTranslatedError());</script></h2>
+<h2 style="text-align: left;"><br/>Que tal tentar novamente?</h2>
+<h2 style="text-align: left;"><a href="./donate.html" class="donate-error">DOE AGORA</a></h2></div></div></div>	
+</div>
+	
+</body>
+</html>
